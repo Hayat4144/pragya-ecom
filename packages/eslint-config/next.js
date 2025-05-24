@@ -34,6 +34,11 @@ export const nextJsConfig = [
     rules: {
       ...pluginNext.configs.recommended.rules,
       ...pluginNext.configs["core-web-vitals"].rules,
+      "@typescript-eslint/no-unused-vars": "error",
+      "@next/next/no-img-element": "error",
+      // Add these to ensure strict error checking
+      "no-unused-vars": "error",
+      "no-undef": "error",
     },
   },
   {
