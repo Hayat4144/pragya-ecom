@@ -2,7 +2,6 @@
   "name": "@workspace/logger",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

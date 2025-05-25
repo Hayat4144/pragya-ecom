@@ -2,8 +2,7 @@
     "extends": "@workspace/typescript-config/base.json",
     "compilerOptions": {
         "lib": [
-            "ES2015",
-            "DOM"
+            "ES2015"
         ],
         "outDir": "./dist",
         "rootDir": "./src",
