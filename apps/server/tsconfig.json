@@ -8,8 +8,8 @@
         "rootDir": "./src",
         "baseUrl": ".",
         "paths": {
-            "@workspace/logger/*": [
-                "../../packages/logger/*/dist"
+            "@workspace/*": [
+                "../../packages/*/dist"
             ],
             "@jobs/*": [
                 "src/jobs/*"
