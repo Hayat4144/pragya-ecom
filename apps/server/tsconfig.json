@@ -38,6 +38,9 @@
             "@validation/*": [
                 "src/validation/*"
             ],
+            "@products/*": [
+                "src/products/*"
+            ],
             "@categories/*": [
                 "src/categories/*"
             ]
