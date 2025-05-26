@@ -1,3 +1,4 @@
+import categoryRouter from "@categories/routes";
 import { httpStatus } from "@customtype/http";
 import ErrorMiddleware from "@middlewares/error-middleware";
 import express, { type Express, Request, Response } from "express";
@@ -17,6 +18,9 @@ const startServer = (): Express => {
       message: "Pragya Ecom is running",
     });
   });
+
+  // version 1 API Routes
+  app.use("/api/v1/categories", categoryRouter);
 
   app.use(ErrorMiddleware);
 

@@ -26,9 +26,6 @@
             "@config/*": [
                 "src/config/*"
             ],
-            "@models/*": [
-                "src/models/*"
-            ],
             "@controller/*": [
                 "src/controller/*"
             ],
@@ -38,11 +35,11 @@
             "@services/*": [
                 "src/services/*"
             ],
-            "@db/*": [
-                "src/db/*"
-            ],
             "@validation/*": [
                 "src/validation/*"
+            ],
+            "@categories/*": [
+                "src/categories/*"
             ]
         }
     },

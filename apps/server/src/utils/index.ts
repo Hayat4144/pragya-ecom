@@ -1,5 +1,8 @@
 import { getTableColumns, Table } from "@workspace/db";
 
+export const getSlug = (name: string) =>
+  name.toLowerCase().split(" ").join("-");
+
 export const getFields = <T extends Table>(
   table: T,
   ...fields: (keyof T["_"]["columns"])[]
