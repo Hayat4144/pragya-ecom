@@ -2,10 +2,51 @@ import {
   db,
   eq,
   insertProductAttribute,
+  insertProductAttributeValues,
   productAttributes,
+  productAttributeValues,
 } from "@workspace/db";
 
 class ProductAttributeService {
+  async updateAttributeValue(
+    attributeValueId: string,
+    data: Partial<insertProductAttributeValues>,
+  ) {
+    const [attributeValue] = await db
+      .update(productAttributeValues)
+      .set(data)
+      .where(eq(productAttributeValues.id, attributeValueId))
+      .returning({ value: productAttributeValues.value });
+
+    return attributeValue;
+  }
+
+  async addAttributeValue(data: insertProductAttributeValues) {
+    const [attributeValue] = await db
+      .insert(productAttributeValues)
+      .values(data)
+      .returning({
+        id: productAttributeValues.id,
+        value: productAttributeValues.value,
+      });
+    return attributeValue;
+  }
+
+  async getAttributeValues(attributeId: string) {
+    const attributeValues = await db.query.productAttributeValues.findMany({
+      where: eq(productAttributeValues.attributeId, attributeId),
+    });
+    return attributeValues;
+  }
+
+  async getAttributeById(attributeId: string) {
+    const [attribute] = await db
+      .select()
+      .from(productAttributes)
+      .where(eq(productAttributes.id, attributeId));
+    return attribute;
+  }
+
   async updateAttribute(
     attributeId: string,
     data: Partial<insertProductAttribute>,
