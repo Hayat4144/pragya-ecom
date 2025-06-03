@@ -61,7 +61,15 @@ const addProduct = asyncHandler(async (req: Request, res: Response) => {
     metaDescription,
     categoryId,
     hasVariants,
+    attributeIds,
   }: addProductReq = req.body;
+
+  if (hasVariants && !attributeIds?.length) {
+    throw new ApiError(
+      "Attribute ids are required",
+      httpStatusCode.BAD_REQUEST,
+    );
+  }
 
   const productData: insertProduct = {
     name,
@@ -73,7 +81,7 @@ const addProduct = asyncHandler(async (req: Request, res: Response) => {
     categoryId,
   };
 
-  const product = await productService.addProduct(productData);
+  const product = await productService.addProduct(productData, attributeIds);
   if (!product) {
     logger.error("Something went wrong");
     throw new ApiError("Something went wrong", httpStatusCode.BAD_REQUEST);

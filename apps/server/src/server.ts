@@ -4,6 +4,7 @@ import ErrorMiddleware from "@middlewares/error-middleware";
 import productRouter from "@products/routes";
 import productAttributeValueRouter from "@products/routes/product-attribute-value";
 import productAttributeRouter from "@products/routes/product-attributes";
+import productVariantRouter from "@products/routes/product-variant";
 import express, { type Express, Request, Response } from "express";
 import morgan from "morgan";
 
@@ -25,6 +26,7 @@ const startServer = (): Express => {
   // version 1 API Routes
   app.use("/api/v1/categories", categoryRouter);
   app.use("/api/v1/products", productRouter);
+  app.use("/api/v1/products/variants", productVariantRouter);
   app.use("/api/v1/products/attributes", productAttributeRouter);
   app.use("/api/v1/products/attributes/values", productAttributeValueRouter);
 

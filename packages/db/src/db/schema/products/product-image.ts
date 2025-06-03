@@ -4,7 +4,7 @@ import { products } from ".";
 import { integer } from "drizzle-orm/pg-core";
 import { text } from "drizzle-orm/pg-core";
 import { varchar } from "drizzle-orm/pg-core";
-import { productItems } from "./product-item";
+import { productVariants } from "./product-variant";
 
 export const productImage = pgTable("product_image", {
   id: uuid().primaryKey().notNull().defaultRandom(),
@@ -14,9 +14,9 @@ export const productImage = pgTable("product_image", {
   displayOrder: integer("display_order").notNull().default(0),
   url: text("url").notNull(),
   altText: varchar("alt_text").notNull(),
-  productItemId: uuid("product_item_id")
+  productVariantId: uuid("product_variant_id")
     .notNull()
-    .references(() => productItems.id),
+    .references(() => productVariants.id),
   ...timestampFields,
 });
 
